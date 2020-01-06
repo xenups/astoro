@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+
+  web:
+    build: .
+    #    connect gunicorn to wsgi replace the python manage.py runserver 0.0.0.0:8000
+    command: bash -c "python3 manage.py collectstatic --no-input && python3 manage.py migrate && gunicorn --timeout=30 --workers=2 --bind :8000 Astrology.wsgi:application"
+
+    container_name: astrology
+    volumes:
+      - .:/Astrology
+      - ./static:/static
+      - ./media:/media
+
+    ports:
+      - "8000:8000"
+  nginx:
+    image: nginx:latest
+    ports:
+      - "3000:8000"
+    volumes:
+      - ./src:/src
+      - ./config/nginx:/etc/nginx/conf.d
+      - ./static:/static
+      - ./media:/media
+    depends_on:
+      - web
+
