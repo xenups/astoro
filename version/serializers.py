@@ -6,4 +6,4 @@ from .models import AstorologyVersion
 class AstrologySerializer(serializers.ModelSerializer, ):
     class Meta:
         model = AstorologyVersion
-        fields = '__all__'
+        fields = ['min_version', 'current_version']

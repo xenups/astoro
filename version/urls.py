@@ -5,6 +5,5 @@ from django.views.decorators.cache import cache_page
 urlpatterns = [
 
     path('versions/', (views.AstorologyVersionList.as_view())),
-    path('versions/<int:pk>/', views.AstorologyVersionDetail.as_view()),
 
 ]

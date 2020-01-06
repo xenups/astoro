@@ -8,3 +8,11 @@ class AstorologyVersion(models.Model):
 
     def __str__(self):
         return self.current_version
+
+    @classmethod
+    def object(cls):
+        return cls._default_manager.all().first()  # Since only one item
+
+    def save(self, *args, **kwargs):
+        self.id = 1
+        return super().save(*args, **kwargs)
