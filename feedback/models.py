@@ -1,6 +1,5 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django_jalali.db import models as jmodels
 
 
 # Create your models here.
