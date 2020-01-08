@@ -10,8 +10,6 @@ from version.models import AstorologyVersion
 from version.serializers import AstrologySerializer
 
 
-
-
 class AstorologyVersionList(generics.ListAPIView):
     queryset = AstorologyVersion.objects.all()
     serializer_class = AstrologySerializer
